@@ -20,6 +20,12 @@
 	color: white;
 }
 
+.lmj-cart-supp-button {
+	background-color: white;
+	color: black;
+	
+}
+
 .lmj-cart-closed {
 	padding: 32px;
 	width: 200px;
