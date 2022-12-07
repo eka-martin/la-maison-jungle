@@ -5,7 +5,7 @@ import '../styles/PlantItem.css'
 
 function PlantItem({ id, water, light, name, cover }) {
     function handleClick(plantName) {
-        alert(`Vous voulez acheter 1 ${plantName} ? Très bon choix 🌱✨`)
+         alert(`Vous voulez acheter 1 ${plantName} ? Très bon choix 🌱✨`)
     }
     return (
 
