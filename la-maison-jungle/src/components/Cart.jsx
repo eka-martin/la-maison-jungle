@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import '../styles/Cart.css'
 
+
 //les props 'cart' et 'updateCart' viennent de useState et 
 //sont ajoutés ds fonction pour pouvoir etre liés avec App
-function Cart({ cart, updateCart }) {
+function Cart({ cart, updateCart, }) {
     const [isOpen, setIsOpen] = useState(false)
     const total = cart.reduce(
         (acc, plantType) => acc + plantType.amount * plantType.price,
@@ -11,21 +12,13 @@ function Cart({ cart, updateCart }) {
     )
 
     function removeFromCart(name, price) {
-        const currentPlantSaved = cart.find((plant) => plant.name === name)
-        if (currentPlantSaved) {
-            const cartFilteredCurrentPlant = cart.filter(
-                (plant) => plant.name !== name
-            )
-            updateCart([
-                ...cartFilteredCurrentPlant,
-                { name, price, amount: currentPlantSaved.amount + 1 }
-            ])
-        } else {
-            updateCart([...cart, { name, price, amount: 1 }])
-        }
+        //on utilise filter pour supprimer les items
+        const currentFilteredCart = cart.filter(plant => plant.name !== name)
+        updateCart([...currentFilteredCart])
     }
-    //const ivyPrice = 10
-    //const flowerPrice = 15
+    //on utilise le tableau de dépendances [total], on peut y mettre plusieurs
+    //variables.  l'alerte ne s'affiche que lorsque le total de mon panier change
+    
     return isOpen ? (<div className='lmj-cart'>
         <button
             className='lmj-cart-toggle-button'
